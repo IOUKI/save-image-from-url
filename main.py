@@ -1,6 +1,7 @@
 from jsonEditor import readJsonFile
 import requests
 import threading
+import os
 
 def downloadImage(url, imageName):
     response = requests.get(url)
@@ -13,14 +14,44 @@ def task(urls: list, groupCode: str):
         downloadImage(url=url, imageName=imageName)
         print(f'{imageName}.jpg downloaded!')
 
-groupCodeList = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+jsonFiles = os.listdir('./imageUrl')
+print(f"讀取到json file: {jsonFiles}")
+
+groupCodeList = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z"
+]
 threadArray = []
 
-for i in range(7):
+for index, jsonFilename in enumerate(jsonFiles):
 
-    urls = readJsonFile(f'imageUrl/{i + 1}.json')
+    urls = readJsonFile(f'imageUrl/{jsonFilename}')
     
-    threadArray.append(threading.Thread(target=task, args=(urls, groupCodeList[i])))
+    threadArray.append(threading.Thread(target=task, args=(urls, groupCodeList[index])))
     
 for thread in threadArray:
     thread.start()
