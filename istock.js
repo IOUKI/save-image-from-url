@@ -1,3 +1,5 @@
+// istock 網站圖片爬蟲
+
 let sleepSetTimeout_ctrl;
 
 function sleep(ms) {
